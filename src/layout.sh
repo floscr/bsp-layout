@@ -104,7 +104,13 @@ start_listener() {
   fi
 
   initialize_layout() { setup_layout $layout $args 2> /dev/null || true; }
-  recalculate_layout() { run_layout $layout $args 2> /dev/null || true; }
+  recalculate_layout() {
+    run_layout $layout $args 2> /dev/null || true;
+    # Hacky fix to refresh windows that are stuck after applying a layout (emacs)
+    gap=$(bspc config window_gap)
+    bspc config window_gap $(( $gap + 1 ));
+    bspc config window_gap $gap;
+  }
 
   # Then listen to node changes and recalculate as required
   bspc subscribe node_{add,remove,transfer}  | while read line; do
