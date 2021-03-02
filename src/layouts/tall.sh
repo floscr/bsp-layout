@@ -6,7 +6,7 @@ source "$ROOT/utils/config.sh";
 
 master_size=$TALL_RATIO;
 
-node_filter="!hidden";
+node_filter="!hidden.!floating";
 
 execute_layout() {
   while [[ ! "$#" == 0 ]]; do
