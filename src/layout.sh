@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export VERSION="{{VERSION}}";
-export ROOT="/etc/dotfiles/submodules/bsp-layout/src";
+export ROOT=$(dirname $0)
 
 source "$ROOT/utils/desktop.sh";
 source "$ROOT/utils/layout.sh";
